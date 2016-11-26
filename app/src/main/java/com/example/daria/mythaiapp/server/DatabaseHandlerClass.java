@@ -4,6 +4,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 
+import java.util.List;
+
 
 /**
  * Created by daria on 26.11.16.
@@ -12,18 +14,19 @@ import android.content.Context;
 public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHandler {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "mythaiManager";
+    private static final String DATABASE_NAME = "myThaiManager";
     private static final String TABLE_DOGS = "dogs";
     private static final String KEY_ID = "id";
-    //TODO:доделать таблицу
+
+    //TODO:нужно будет доделать таблицу и тогда уже прописать методы, я представляю как
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
     }
 
@@ -31,7 +34,7 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    /*@Override
+    @Override
     public void addDog(Dog dog) {
 
     }
@@ -59,5 +62,10 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
     @Override
     public void deleteAll() {
 
-    }*/
+    }
+
+    @Override
+    public List<Dog> findbyParametres() {
+        return null;
+    }
 }
