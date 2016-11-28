@@ -15,9 +15,5 @@ public interface DatabaseHandler {
     public int updateDog(Dog dog);
     public void deleteDog(Dog dog);
     public void deleteAll();
-
-    //public List<Dog> findByColor();
-    //public List<Dog> findByCoatType();
-
     public List<Dog> findbyParametres();
 }

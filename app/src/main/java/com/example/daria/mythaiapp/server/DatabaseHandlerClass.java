@@ -16,22 +16,29 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "myThaiManager";
     private static final String TABLE_DOGS = "dogs";
-    private static final String KEY_ID = "id";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_DATE="date of birth";
+    private static final String COLUMN_SEX = "sex";
+    private static final String COLUMN_COLOUR="colour";
+    private static final String COLUMN_COATTYPE = "coat type";
+    private static final String COLUMN_PRICE="date of birth";
+    private static final String COLUMN_TEXT="text";
 
-    //TODO:нужно будет доделать таблицу и тогда уже прописать методы, я представляю как
+    public DatabaseHandlerClass (Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
+
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
-    }
-
-    public DatabaseHandlerClass (Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
