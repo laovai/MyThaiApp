@@ -16,7 +16,7 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "myThaiManager";
     private static final String TABLE_DOGS = "dogs";
-    private static final String COLUMN_ID = "id";
+    private static final String KEY_COLUMN_ID = "id";
     private static final String COLUMN_DATE="date of birth";
     private static final String COLUMN_SEX = "sex";
     private static final String COLUMN_COLOUR="colour";
@@ -30,10 +30,10 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-
-
-
+        String CREATE_TABLE_DOGS = "CREATE TABLE " + TABLE_DOGS + "("
+                + KEY_COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_DATE+ " DATE,"
+                + COLUMN_SEX + "???" + ")";
+        db.execSQL(TABLE_DOGS);
     }
 
     @Override

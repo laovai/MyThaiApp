@@ -11,7 +11,7 @@ public class Dog {
     int id;
     Date date;
     //как хранить фото? а похуй, пока никак
-    boolean sex;
+    int sex;
     Colour colour;
     CoatType coatType;
     PriceCategory category;
@@ -20,7 +20,7 @@ public class Dog {
     public Dog() {
     }
 
-    public Dog(int id, Date date, boolean sex, Colour colour, CoatType coatType, PriceCategory category, String text) {
+    public Dog(int id, Date date, int sex, Colour colour, CoatType coatType, PriceCategory category, String text) {
         this.id = id;
         this.date = date;
         this.sex = sex;
@@ -46,11 +46,11 @@ public class Dog {
         this.date = date;
     }
 
-    public boolean isSex() {
+    public int isSex() {
         return sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
@@ -107,7 +107,7 @@ public class Dog {
     public int hashCode() {
         int result = id;
         result = 31 * result + date.hashCode();
-        result = 31 * result + (sex ? 1 : 0);
+        result = 31 * result + sex;
         result = 31 * result + colour.hashCode();
         result = 31 * result + coatType.hashCode();
         result = 31 * result + category.hashCode();
