@@ -2,6 +2,7 @@ package com.example.daria.mythaiapp.server;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by daria on 26.11.16.
@@ -14,6 +15,6 @@ public interface DatabaseHandler {
     public List<Dog> getAllDogs();
     public int updateDog(Dog dog);
     public void deleteDog(Dog dog);
-    public void deleteAll();
+    public void deleteAllDogs();
     public List<Dog> findbyParametres();
 }
