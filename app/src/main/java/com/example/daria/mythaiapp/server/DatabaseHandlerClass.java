@@ -45,21 +45,18 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
                 + COLUMN_COATTYPE + " TEXT," + COLUMN_PRICE + " TEXT,"
                 + COLUMN_TEXT + " TEXT" + ")";
         db.execSQL(TABLE_DOGS);
-/*
+
         String CREATE_TABLE_BREEDERS = "CREATE TABLE " + TABLE_BREEDERS + "("
                 + KEY_COLUMN_ID_BREEDER + " INTEGER PRIMARY KEY," + COLUMN_NAME + " TEXT" + ")";
         db.execSQL(TABLE_BREEDERS);
-*/
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOGS);
-        onCreate(db);
-/*
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BREEDERS);
         onCreate(db);
-*/
+
     }
 
     @Override
@@ -151,24 +148,6 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
     @Override
     public List<Dog> findbyParametres() {
          /*TODO дописать функцию поиска по параметрам
-        List<Dog> dogsList = new ArrayList<Dog>();
-        String selectQuery = "SELECT  * FROM " + TABLE_DOGS + "WHERE" + ;
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                Dog dog = new Dog();
-                dog.setId(Integer.parseInt(cursor.getString(0)));
-                dog.setDate(cursor.getString(1));
-                dog.setSex(cursor.getInt(2));
-                dog.setColour(cursor.getString(3));
-                dog.setCoatType(cursor.getString(4));
-                dog.setCategory(cursor.getString(5));
-                dog.setText(cursor.getString(6));
-                dogsList.add(dog);
-            } while (cursor.moveToNext());
-        }
 */
         return null;
     }
