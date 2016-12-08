@@ -9,18 +9,18 @@ import java.util.Date;
 public class Dog {
 
     int id;
-    Date date;
+    String date;
     //как хранить фото? а похуй, пока никак
     int sex;
-    Colour colour;
-    CoatType coatType;
-    PriceCategory category;
+    String colour;
+    String coatType;
+    String category;
     String text;
 
     public Dog() {
     }
 
-    public Dog(int id, Date date, int sex, Colour colour, CoatType coatType, PriceCategory category, String text) {
+    public Dog(int id, String date, int sex, String colour, String coatType, String category, String text) {
         this.id = id;
         this.date = date;
         this.sex = sex;
@@ -38,11 +38,11 @@ public class Dog {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -54,27 +54,23 @@ public class Dog {
         this.sex = sex;
     }
 
-    public Colour getColour() {
+    public String getColour() {
         return colour;
     }
 
-    public void setColour(Colour colour) {
+    public void setColour(String colour) {
         this.colour = colour;
     }
 
-    public CoatType getCoatType() {
-        return coatType;
-    }
+    public String getCoatType() { return coatType; }
 
-    public void setCoatType(CoatType coatType) {
-        this.coatType = coatType;
-    }
+    public void setCoatType(String coatType) { this.coatType = coatType; }
 
-    public PriceCategory getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(PriceCategory category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
