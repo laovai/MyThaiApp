@@ -17,4 +17,12 @@ public interface DatabaseHandler {
     public void deleteDog(Dog dog);
     public void deleteAllDogs();
     public List<Dog> findbyParametres();
+
+    public void addBreeder(Breeder breeder);
+    public Breeder getBreeder(int id);
+    public List<Breeder> getAllBreeders();
+    public int updateBreeder(Breeder breeder);
+    public void deleteBreeder(Breeder breeder);
+    public void deleteAllBreeders();
+
 }

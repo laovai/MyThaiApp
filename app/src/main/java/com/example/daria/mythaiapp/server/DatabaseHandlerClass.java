@@ -28,16 +28,15 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
     private static final String COLUMN_PRICE="date of birth";
     private static final String COLUMN_TEXT="text";
 
-    /*
+
     private static final String TABLE_BREEDERS = "breeders";
     private static final String KEY_COLUMN_ID_BREEDER = "id";
     private static final String COLUMN_NAME="name";
-*/
 
     public DatabaseHandlerClass (Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
+//TODO разобраться с функциями для двух таблиц в бд
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE_DOGS = "CREATE TABLE " + TABLE_DOGS + "("
@@ -148,23 +147,99 @@ public class DatabaseHandlerClass extends SQLiteOpenHelper implements DatabaseHa
         db.close();
     }
 
-    //TODO дописать функцию поиска по параметрам, похожа на detAll, но с where
+
     @Override
     public List<Dog> findbyParametres() {
+         /*TODO дописать функцию поиска по параметрам
+        List<Dog> dogsList = new ArrayList<Dog>();
+        String selectQuery = "SELECT  * FROM " + TABLE_DOGS + "WHERE" + ;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Dog dog = new Dog();
+                dog.setId(Integer.parseInt(cursor.getString(0)));
+                dog.setDate(cursor.getString(1));
+                dog.setSex(cursor.getInt(2));
+                dog.setColour(cursor.getString(3));
+                dog.setCoatType(cursor.getString(4));
+                dog.setCategory(cursor.getString(5));
+                dog.setText(cursor.getString(6));
+                dogsList.add(dog);
+            } while (cursor.moveToNext());
+        }
+*/
         return null;
     }
 
-    /*
-
-   TODO: переделать все CRUD через Generic
+    @Override
     public void addBreeder(Breeder breeder) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, breeder.getName());
         db.insert(TABLE_BREEDERS, null, values);
         db.close();
+    }
 
-    }*/
+    @Override
+    public Breeder getBreeder(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_BREEDERS, new String[] { KEY_COLUMN_ID_BREEDER,
+                        COLUMN_NAME }, KEY_COLUMN_ID_BREEDER + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Breeder breeder = new Breeder(Integer.parseInt(cursor.getString(0)), cursor.getString(1));
+        return breeder;
+    }
+
+    @Override
+    public List<Breeder> getAllBreeders() {
+        List<Breeder> breedersList = new ArrayList<Breeder>();
+        String selectQuery = "SELECT  * FROM " + TABLE_BREEDERS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                Breeder breeder = new Breeder();
+                breeder.setId(Integer.parseInt(cursor.getString(0)));
+                breeder.setName(cursor.getString(1));
+                breedersList.add(breeder);
+            } while (cursor.moveToNext());
+        }
+
+        return breedersList;
+    }
+
+    @Override
+    public int updateBreeder(Breeder breeder) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, breeder.getName());
+        return db.update(TABLE_BREEDERS, values, KEY_COLUMN_ID_BREEDER + " = ?",
+                new String[] { String.valueOf(breeder.getId()) });
+    }
+
+    @Override
+    public void deleteBreeder(Breeder breeder) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BREEDERS, KEY_COLUMN_ID_BREEDER + " = ?", new String[] { String.valueOf(breeder.getId()) });
+        db.close();
+    }
+
+    @Override
+    public void deleteAllBreeders() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BREEDERS, null, null);
+        db.close();
+    }
+
 
 
 }
